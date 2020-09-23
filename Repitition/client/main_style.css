@@ -1,0 +1,10 @@
+body {
+    background-color: blueviolet;
+}
+
+h1:hover {
+    transition-duration: 5s;
+    transition-delay: 0.1s;
+    font-size: 500%;
+}
+
