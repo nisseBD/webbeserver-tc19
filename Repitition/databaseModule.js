@@ -14,9 +14,15 @@ const messagePostSchema = new mongoose.Schema({
 
 const MessagePost = mongoose.model('MessagePost', messagePostSchema);
 
-let newMessagePost = new MessagePost({
-    name: "Nils",
-    message: "Hej hur mår du?"
-});
 
-newMessagePost.save()
+exports.saveData = function (mp, name, message) {
+
+
+    let newMessagePost = new mp({
+        name: name,
+        message: message
+    });
+    
+    newMessagePost.save()
+}
+

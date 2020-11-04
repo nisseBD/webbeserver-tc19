@@ -24,8 +24,29 @@ app.get('/great', (req, res) => {
 
 app.post('/sendMessage', function (req, res) {
     console.log(req.body.name)
-    console.log(req.body.email)
+    console.log(req.body.message)
+    module3.saveData(MessagePost,req.body.name,req.body.message)
+
   res.redirect("/great")
 })
 
 app.listen(port, () => console.log(`Example app listening on port port!`))
+
+const module3 = require("test");
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/webbserver1', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+    console.log("We are connected");
+});
+
+const messagePostSchema = new mongoose.Schema({
+    name: String,
+    message: String
+});
+
+const MessagePost = mongoose.model('MessagePost', messagePostSchema);
+
