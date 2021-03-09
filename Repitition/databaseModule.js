@@ -15,10 +15,8 @@ const messagePostSchema = new mongoose.Schema({
 const MessagePost = mongoose.model('MessagePost', messagePostSchema);
 
 
-exports.saveData = function (mp, name, message) {
-
-
-    let newMessagePost = new mp({
+exports.saveData = function (name, message) {
+    let newMessagePost = new MessagePost({
         name: name,
         message: message
     });
